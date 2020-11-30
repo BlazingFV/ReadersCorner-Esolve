@@ -1,3 +1,5 @@
+import 'package:e_solve/screens/register_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
@@ -16,9 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              height: 75,
-            ),
+            logoImage(),
             userNameTextField(),
             SizedBox(
               height: 20,
@@ -39,60 +39,77 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  Padding logoImage() {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10, 85, 10, 10),
+      child: Image(
+        image: AssetImage('assets/images/deer.png'),
+      ),
+    );
+  }
+
   Padding passwordTextField() {
     return Padding(
-            padding: const EdgeInsets.fromLTRB(10, 25, 10, 45),
-            child: TextFormField(
-              controller: _passwordController,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              validator: (value) {
-                if (value.isEmpty || value.length < 6) {
-                  return 'Please enter at least 6 characters. ';
-                } else {
-                  return null;
-                }
-              },
-              decoration: InputDecoration(
-                hintText: 'PASSWORD',
-                hintStyle: TextStyle(
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-          );
+      padding: const EdgeInsets.fromLTRB(15, 20, 15, 45),
+      child: TextFormField(
+        obscureText: true,
+        controller: _passwordController,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        validator: (value) {
+          if (value.isEmpty || value.length < 6) {
+            return 'Please enter at least 6 characters. ';
+          } else {
+            return null;
+          }
+        },
+        decoration: InputDecoration(
+          hintText: 'PASSWORD',
+          hintStyle: TextStyle(
+            color: Colors.grey,
+          ),
+        ),
+      ),
+    );
   }
 
   Padding userNameTextField() {
     return Padding(
-            padding: const EdgeInsets.fromLTRB(10, 100, 10, 25),
-            child: TextFormField(
-              controller: _userNameController,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              validator: (value) {
-                if (value.isEmpty || value.length < 6) {
-                  return 'Please enter at least 6 characters.';
-                } else {
-                  return null;
-                }
-              },
-              decoration: InputDecoration(
-                hintText: 'USERNAME',
-                hintStyle: TextStyle(
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-          );
+      padding: const EdgeInsets.fromLTRB(15, 95, 15, 25),
+      child: TextFormField(
+        controller: _userNameController,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        validator: (value) {
+          if (value.isEmpty || value.length < 6) {
+            return 'Please enter at least 6 characters.';
+          } else {
+            return null;
+          }
+        },
+        decoration: InputDecoration(
+          hintText: 'USERNAME',
+          hintStyle: TextStyle(
+            color: Colors.grey,
+          ),
+        ),
+      ),
+    );
   }
 
   InkWell registerButton() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          CupertinoPageRoute(
+            builder: (context) => RegisterScreen(),
+          ),
+        );
+      },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(8, 2, 0, 10),
+            padding: const EdgeInsets.fromLTRB(15, 0, 15, 10),
             child: Text.rich(
               TextSpan(
                 text: 'Don\'t have an account?',
@@ -117,11 +134,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Padding googleLoginButton() {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
       child: InkWell(
         child: Container(
           width: double.infinity,
-          height: 75,
+          height: 65,
           child: SignInButton(
             Buttons.GoogleDark,
             mini: false,
@@ -134,10 +151,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Padding facebookLoginButton() {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
       child: Container(
         width: double.infinity,
-        height: 75,
+        height: 65,
         child: SignInButton(
           Buttons.Facebook,
           mini: true,
@@ -173,11 +190,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Padding loginButton() {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.fromLTRB(10, 0, 10, 3.4),
       child: Container(
         color: Color(0xffffab40),
         width: double.infinity,
-        height: 75,
+        height: 65,
         child: FlatButton(
           onPressed: () {},
           child: Text(

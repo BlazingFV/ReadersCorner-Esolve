@@ -1,3 +1,4 @@
+import 'package:e_solve/screens/intro_screen.dart';
 import 'package:e_solve/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'E-solve',
-      home: LoginScreen(),
+      home: IntroScreen(),
      
     );
   }
