@@ -1,9 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:e_solve/screens/intro_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intro_slider/intro_slider.dart';
-import 'package:intro_slider/slide_object.dart';
 
 class WalkThrough extends StatefulWidget {
   @override
@@ -16,7 +15,7 @@ class _WalkThroughState extends State<WalkThrough> {
     'assets/images/03.jpg',
     'assets/images/04.jpg',
   ];
-  int _current = 0;
+  var _current = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +59,20 @@ class _WalkThroughState extends State<WalkThrough> {
                         ),
                       ))
                   .toList(),
+            ),
+            Positioned(
+              top: 380,
+              child: DotsIndicator(
+                axis: Axis.vertical,
+                dotsCount: 3,
+                position: _current.toDouble(),
+                decorator: DotsDecorator(
+                    activeColor: Colors.white,
+                    color: Colors.grey,
+                    activeShape: const Border(),
+                    shape: const Border(),
+                    size: Size.square(10)),
+              ),
             ),
           ]);
         },

@@ -1,3 +1,4 @@
+import 'package:e_solve/screens/home_screen.dart';
 import 'package:e_solve/screens/login_screen.dart';
 import 'package:e_solve/screens/register_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,7 +23,7 @@ class IntroScreen extends StatelessWidget {
             children: [
               signUpButton(context),
               loginButton(context),
-              skipText(),
+              skipText(context),
             ],
           ),
         ),
@@ -30,10 +31,17 @@ class IntroScreen extends StatelessWidget {
     );
   }
 
-  Widget skipText() {
+  Widget skipText(BuildContext context) {
     return InkWell(
-      onTap: (){},
-          child: Text(
+      onTap: () {
+        Navigator.push(
+          context,
+          CupertinoPageRoute(
+            builder: (context) => HomeScreen(),
+          ),
+        );
+      },
+      child: Text(
         'SKIP',
         style: TextStyle(
           fontSize: 23,
