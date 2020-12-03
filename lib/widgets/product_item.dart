@@ -32,7 +32,11 @@ class ProductItem extends StatelessWidget {
                 title: Text(
                   product.name,
                   textAlign: TextAlign.start,
-                  style: TextStyle(color: Colors.grey),
+                  softWrap: true,
+                  maxLines: 4,
+                  style: TextStyle(
+                    color: Colors.grey,
+                  ),
                 ),
               ),
             ),
