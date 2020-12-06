@@ -1,6 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_solve/models/products_provider.dart';
+import 'package:e_solve/screens/categories_screen.dart';
+import 'package:e_solve/screens/shop_screen.dart';
 import 'package:e_solve/widgets/all_products.dart';
+import 'package:e_solve/widgets/app_drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final globalKey = GlobalKey<ScaffoldState>();
   PageController pageController;
   int pageIndx = 0;
+  String _title = "الرئيسية";
 
   // @override
   // void dispose() {
@@ -46,8 +50,26 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   onPageChanged(int pageIndex) {
+    String _temptitle = "";
+    switch (pageIndex) {
+      case 0:
+        _temptitle = "الرئيسية";
+
+        break;
+      case 1:
+        _temptitle = "التصنيفات";
+
+        break;
+      case 2:
+        _temptitle = "المتجر";
+        break;
+      case 3:
+        _temptitle = "حسابي";
+        break;
+    }
     setState(() {
-      pageIndx = pageIndex;
+      this.pageIndx = pageIndex;
+      this._title = _temptitle;
     });
   }
 
@@ -62,46 +84,66 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: AppDrawer(),
       bottomNavigationBar: CupertinoTabBar(
         backgroundColor: Colors.white70,
         onTap: changePage,
         currentIndex: pageIndx,
+        activeColor: Colors.blue,
         items: [
           BottomNavigationBarItem(
+            activeIcon: Icon(
+              Icons.home,
+              color: Colors.blue,
+            ),
             icon: Icon(
               Icons.home,
               color: Colors.grey,
             ),
-            label: 'Home',
+            label: 'الرئيسية',
           ),
           BottomNavigationBarItem(
+            activeIcon: Icon(
+              Icons.category,
+              color: Colors.blue,
+            ),
             icon: Icon(
               Icons.category,
               color: Colors.grey,
             ),
-            label: 'Categories',
+            label: 'التصنيفات',
           ),
           BottomNavigationBarItem(
+            activeIcon: Icon(
+              Icons.book,
+              color: Colors.blue,
+            ),
             icon: Icon(
               Icons.book,
               color: Colors.grey,
             ),
-            label: 'Shop',
+            label: 'المتجر',
           ),
           BottomNavigationBarItem(
+            activeIcon: Icon(
+              Icons.account_circle,
+              color: Colors.blue,
+            ),
             icon: Icon(
               Icons.account_circle,
               color: Colors.grey,
             ),
-            label: 'My Account',
+            label: 'حسابي',
           ),
         ],
       ),
       key: globalKey,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        automaticallyImplyLeading: true,
         backgroundColor: Colors.white,
         title: Text(
-          'Home',
+          _title,
           style: TextStyle(
             color: Colors.black,
           ),
@@ -126,13 +168,16 @@ class _HomeScreenState extends State<HomeScreen> {
           : PageView(
               controller: pageController,
               onPageChanged: onPageChanged,
+              physics: NeverScrollableScrollPhysics(),
               children: [
-                  FutureBuilder(builder: (context, snapshot) {
-                    return RefreshIndicator(
-                        child: AllProducts(),
-                        onRefresh: () => _refresh(context));
-                  }),
-                ]),
+                FutureBuilder(builder: (context, snapshot) {
+                  return RefreshIndicator(
+                      child: AllProducts(), onRefresh: () => _refresh(context));
+                }),
+                CategoriesScreen(),
+                ShopScreen(),
+              ],
+            ),
     );
   }
 }

@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
           }
         },
         decoration: InputDecoration(
-          hintText: 'PASSWORD',
+          hintText: 'الرقم السري',
           hintStyle: TextStyle(
             color: Colors.grey,
           ),
@@ -86,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
           }
         },
         decoration: InputDecoration(
-          hintText: 'USERNAME',
+          hintText: 'اسم المستخدم',
           hintStyle: TextStyle(
             color: Colors.grey,
           ),
@@ -112,14 +112,14 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.fromLTRB(15, 0, 15, 10),
             child: Text.rich(
               TextSpan(
-                text: 'Don\'t have an account?',
+                text: 'ليس لديك حساب؟ ',
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.grey,
                 ),
                 children: [
                   TextSpan(
-                      text: 'Sign up',
+                      text: 'التسجيل',
                       style: TextStyle(
                         color: Colors.black,
                       )),
@@ -173,8 +173,9 @@ class _LoginScreenState extends State<LoginScreen> {
           InkWell(
             onTap: () {},
             child: Text(
-              "Forgot Password?",
+              "هل نسيت كلمة المرور؟",
               style: TextStyle(
+                fontSize: 14,
                 shadows: [Shadow(color: Colors.black, offset: Offset(0, -5))],
                 color: Colors.transparent,
                 decoration: TextDecoration.underline,
@@ -198,7 +199,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: FlatButton(
           onPressed: () {},
           child: Text(
-            'LOGIN',
+            'الدخول',
             style: TextStyle(
               color: Colors.white,
               fontSize: 26,

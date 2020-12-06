@@ -42,7 +42,7 @@ class IntroScreen extends StatelessWidget {
         );
       },
       child: Text(
-        'SKIP',
+        'تخطي',
         style: TextStyle(
           fontSize: 23,
           shadows: [Shadow(color: Colors.white, offset: Offset(0, -1))],
@@ -74,7 +74,7 @@ class IntroScreen extends StatelessWidget {
                     CupertinoPageRoute(builder: (context) => RegisterScreen()));
               },
               child: Text(
-                'SIGN UP',
+                'التسجيل',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -108,7 +108,7 @@ class IntroScreen extends StatelessWidget {
                     CupertinoPageRoute(builder: (context) => LoginScreen()));
               },
               child: Text(
-                'LOGIN',
+                'تسجيل الدخول',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,

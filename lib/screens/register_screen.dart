@@ -122,14 +122,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
             padding: const EdgeInsets.fromLTRB(15, 0, 15, 25),
             child: Text.rich(
               TextSpan(
-                text: 'Already have an account.',
+                text: 'هل لديك حساب.؟',
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.grey,
                 ),
                 children: [
                   TextSpan(
-                      text: 'Login',
+                      text: ' تسجيل الدخول',
                       style: TextStyle(
                         color: Colors.black,
                       )),
@@ -156,7 +156,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
         },
         decoration: InputDecoration(
-          hintText: 'FIRST NAME',
+          hintText: 'الاسم الاول',
           hintStyle: TextStyle(
             color: Colors.grey,
           ),
@@ -179,7 +179,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
         },
         decoration: InputDecoration(
-          hintText: 'LAST NAME',
+          hintText: 'الاسم الاخير',
           hintStyle: TextStyle(
             color: Colors.grey,
           ),
@@ -202,7 +202,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
         },
         decoration: InputDecoration(
-          hintText: 'ADDRESS',
+          hintText: 'العنوان',
           hintStyle: TextStyle(
             color: Colors.grey,
           ),
@@ -226,7 +226,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
         },
         decoration: InputDecoration(
-          hintText: 'PHONE NUMBER',
+          hintText: 'رقم الهاتف',
           hintStyle: TextStyle(
             color: Colors.grey,
           ),
@@ -249,7 +249,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
         },
         decoration: InputDecoration(
-          hintText: 'ZIP CODE',
+          hintText: 'الرمز البريدي',
           hintStyle: TextStyle(
             color: Colors.grey,
           ),
@@ -272,7 +272,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
         },
         decoration: InputDecoration(
-          hintText: 'USERNAME',
+          hintText: 'اسم المستخدم',
           hintStyle: TextStyle(
             color: Colors.grey,
           ),
@@ -296,7 +296,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
         },
         decoration: InputDecoration(
-          hintText: 'PASSWORD',
+          hintText: 'الرقم السري',
           hintStyle: TextStyle(
             color: Colors.grey,
           ),
@@ -320,7 +320,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
         },
         decoration: InputDecoration(
-          hintText: 'CONFIRM PASSWORD',
+          hintText: 'تاكيد الرقم السري',
           hintStyle: TextStyle(
             color: Colors.grey,
           ),
@@ -345,7 +345,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
         },
         decoration: InputDecoration(
-          hintText: 'EMAIL',
+          hintText: 'البريد الإلكتروني',
           hintStyle: TextStyle(
             color: Colors.grey,
           ),
@@ -363,7 +363,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: FlatButton(
           onPressed: () {},
           child: Text(
-            'SIGN UP',
+            'التسجيل',
             style: TextStyle(
               color: Colors.white,
               fontSize: 26,
