@@ -13,69 +13,86 @@ class _ProductTileShopState extends State<ProductTileShop> {
     final product = Provider.of<Product>(context);
     return Card(
       elevation: 2,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      child: Container(
+        width: 160,
+        
+        child: ListView(
+          shrinkWrap: true,
           children: [
-            Stack(
-              children: [
-                Container(
-                  height: 200,
-                  width: double.infinity,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Container(
+                
+                decoration: BoxDecoration(boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3), // changes position of shadow
                   ),
-                  child: Image.network(
-                    product.image,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                Positioned(
-                    right: 0,
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      child: IconButton(
-                        icon: Icon(Icons.favorite_border),
-                        onPressed: () {},
-                      ),
-                    ))
-              ],
-            ),
-            SizedBox(height: 8),
-            Text(
-              product.name,
-              maxLines: 4,
-            
-              overflow: TextOverflow.ellipsis,
-            ),
-            SizedBox(height: 8),
-            if (product.avgRate != null)
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      product.avgRate.toString(),
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Icon(
-                      Icons.star,
-                      size: 16,
-                      color: Colors.white,
-                    ),
-                  ],
+                ]),
+                child: Image.network(
+                  product.image,
+                  fit: BoxFit.cover,
                 ),
               ),
-            SizedBox(height: 8),
-            Text('\$${product.price}',
-                style: TextStyle(fontSize: 32, fontFamily: 'avenir')),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: Text(
+                '${product.name}',
+                maxLines: 2,
+                softWrap: true,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(6, 0, 0, 0),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.star,
+                    color: Colors.grey,
+                  ),
+                  Icon(
+                    Icons.star,
+                    color: Colors.grey,
+                  ),
+                  Icon(
+                    Icons.star,
+                    color: Colors.grey,
+                  ),
+                  Icon(
+                    Icons.star,
+                    color: Colors.grey,
+                  ),
+                  Icon(
+                    Icons.star,
+                    color: Colors.grey,
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+              child: Text('By'),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+              child: Text(
+                '${product.authorName}'.trim(),
+                maxLines: 2,
+                softWrap: true,
+              ),
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+              leading: Text(
+                'EGP${product.price}',
+                style: TextStyle(color: Colors.grey),
+              ),
+              trailing: Icon(Icons.shopping_cart),
+            ),
           ],
         ),
       ),

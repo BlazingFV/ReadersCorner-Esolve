@@ -34,7 +34,7 @@ class _AllProductsState extends State<AllProducts> {
                 });
               }),
           itemBuilder: (context, i) {
-            final int first = i;
+            final int first = i ;
             final int second = first + 2;
             return Row(
               children: [first, second].map((idx) {
@@ -54,7 +54,7 @@ class _AllProductsState extends State<AllProducts> {
         ),
       ),
       Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.fromLTRB(3, 10, 0, 0),
         child: ProductsList(),
       ),
     ]);

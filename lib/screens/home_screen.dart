@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: AppDrawer(),
+      endDrawer: AppDrawer(),
       bottomNavigationBar: CupertinoTabBar(
         backgroundColor: Colors.white70,
         onTap: changePage,
@@ -141,27 +141,38 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
         automaticallyImplyLeading: true,
-        backgroundColor: Colors.white,
-        title: Text(
-          _title,
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
-        centerTitle: true,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 25),
-            child: Icon(
+        titleSpacing: 0.0,
+        title: Row(
+          children: <Widget>[
+            Icon(
+              Icons.search,
+              color: Colors.black,
+            ),
+            SizedBox(width: 4.0),
+            Icon(
               Icons.shopping_cart,
               color: Colors.black,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Icon(Icons.search, color: Colors.black),
-          ),
-        ],
+            SizedBox(width: 65),
+            Container(
+              //margin: EdgeInsets.fromLTRB(0, 0, 130, 0),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      child: Text(
+                        _title,
+                        style: TextStyle(fontSize: 20,color: Colors.black),
+                      ),
+                    ),
+                    SizedBox(height: 4.0),
+                   
+                  ]),
+            )
+          ],
+        ),
+        backgroundColor: Colors.white,
       ),
       body: _isLoading
           ? Center(child: CupertinoActivityIndicator(animating: true))

@@ -72,32 +72,42 @@ class _AppDrawerState extends State<AppDrawer> {
               height: 10,
             ),
             ExpansionTile(
-              backgroundColor: Colors.grey[100],
-              childrenPadding: EdgeInsets.all(2),
-              initiallyExpanded: expand,
-              title: Text('التصنيفات'),
-              children: buildExpandingTile(categroiesValues),
-            ),
+                backgroundColor: Colors.grey[100],
+                childrenPadding: EdgeInsets.all(2),
+                initiallyExpanded: expand,
+                title: Text('التصنيفات'),
+                children: [
+                  ...buildExpandingTile(categroiesValues),
+                  buildFilterButton(),
+                ]),
             Divider(),
             ExpansionTile(
-              childrenPadding: EdgeInsets.all(2),
-              initiallyExpanded: expand,
-              title: Text('المؤلفون'),
-              children: buildExpandingTile(authorsValues),
-            ),
+                childrenPadding: EdgeInsets.all(2),
+                initiallyExpanded: expand,
+                title: Text('المؤلفون'),
+                children: [
+                  ...buildExpandingTile(authorsValues),
+                  buildFilterButton(),
+                ]),
             Divider(),
             ExpansionTile(
               childrenPadding: EdgeInsets.all(2),
               initiallyExpanded: expand,
               title: Text('اللغات'),
-              children: buildExpandingTile(languagesValues),
+              children: [
+                ...buildExpandingTile(languagesValues),
+                buildFilterButton(),
+              ],
             ),
             Divider(),
             ExpansionTile(
               childrenPadding: EdgeInsets.all(2),
               initiallyExpanded: expand,
               title: Text('الاعمار'),
-              children: buildExpandingTile(agesValues),
+              children: [
+                ...buildExpandingTile(agesValues),
+                buildFilterButton(),
+              ],
             ),
             Divider(),
             buildListTileOfTexts('تاريخ الطلب', Icons.calendar_today),
@@ -112,23 +122,27 @@ class _AppDrawerState extends State<AppDrawer> {
             SizedBox(
               height: 65,
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-              child: Container(
-                width: double.infinity,
-                child: RaisedButton(
-                    elevation: 5,
-                    color: Colors.teal[300],
-                    onPressed: () {},
-                    child: Text(
-                      'تطبيق المرشحات',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    )),
-              ),
-            ),
+            buildFilterButton(),
           ],
         ),
+      ),
+    );
+  }
+
+  Padding buildFilterButton() {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+      child: Container(
+        width: double.infinity,
+        child: RaisedButton(
+            elevation: 5,
+            color: Colors.teal[300],
+            onPressed: () {},
+            child: Text(
+              'تطبيق المرشحات',
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            )),
       ),
     );
   }
@@ -142,6 +156,7 @@ class _AppDrawerState extends State<AppDrawer> {
 
   List buildExpandingTile(Map<String, bool> values) {
     return values.keys.map((String key) {
+      buildFilterButton();
       return Padding(
         padding: const EdgeInsets.fromLTRB(0, 1, 0, 0),
         child: Container(

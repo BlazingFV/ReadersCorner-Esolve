@@ -16,25 +16,25 @@ class _ShopScreenState extends State<ShopScreen> {
     final productData = Provider.of<Products>(context);
     final products = productData.items;
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: StaggeredGridView.countBuilder(
-                crossAxisCount: 2,
-                itemCount: products.length,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                itemBuilder: (context, index) {
-                  return ChangeNotifierProvider.value(
-                    value: products[index],
-                    child: productData.items.length <= 0
-                        ? Text('No Items added yet...')
-                        : ProductTileShop(),
-                  );
-                },
-                staggeredTileBuilder: (index) => StaggeredTile.fit(1)),
-          ),
-        ],
+      body: GridView.builder(
+        scrollDirection: Axis.vertical,
+        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          childAspectRatio: 0.43,
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 16,
+          maxCrossAxisExtent: 250
+        ),
+        itemCount: products.length,
+        shrinkWrap: true,
+        padding: EdgeInsets.all(0),
+        itemBuilder: (context, index) {
+          return ChangeNotifierProvider.value(
+            value: products[index],
+            child: productData.items.length <= 0
+                ? Text('No Items added yet...')
+                : ProductTileShop(),
+          );
+        },
       ),
     );
   }
